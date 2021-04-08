@@ -1,13 +1,13 @@
 /************************************************/
 /*              Sensor information              */
 /************************************************/
-sensorName = "BMX160";
-xSF = 0.035; // uT / LSB
+sensorName = "FXOS8700";
+xSF = 0.073; //0.035; // uT / LSB
 ySF = xSF;
-zSF = 0.07; // uT / LSB
-xRange = 1150; // +/- 1150 uT
+zSF = 0.073; //0.07; // uT / LSB
+xRange = 1200; //1150; // +/- 1150 uT
 yRange = xRange;
-zRange = 2500; // +/- 2500 uT
+zRange = 1200; //2500; // +/- 2500 uT
 
 /************************************************/
 /*     Determine the frequency of the samples   */
@@ -97,7 +97,7 @@ noiseRange.z = noiseRange.zCounts * 0.07;  // BMX is 0.07 uT / LSB on z
 /*          Generate the report and plots       */
 /************************************************/
 // Print information to the console
-disp("***** BMX160 Baseline Noise Test *****");
+printf("***** %s Baseline Noise Test *****\n", sensorName);
 printf("\tTest parameters:\n\t\tSampling Frequency = %f\n\t\tRange X, Y, Z = %d uT, %d uT, %d uT\n", sampleFreqReport.sampleFreq, xRange, yRange, zRange);
 printf("\tNoise range:\n\t\tCounts X, Y, Z = %d cnts, %d cnts, %d cnts\n\t\tScaled X, Y, Z = %f uT, %f uT, %f uT\n", noiseRange.xCounts, noiseRange.yCounts, noiseRange.zCounts, noiseRange.x, noiseRange.y, noiseRange.z);
 
