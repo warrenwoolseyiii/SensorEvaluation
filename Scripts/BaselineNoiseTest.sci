@@ -2,12 +2,12 @@
 /*              Sensor information              */
 /************************************************/
 sensorName = "FXOS8700";
-xSF = 0.073; //0.035; // uT / LSB
+xSF = 0.07; //0.035; // uT / LSB
 ySF = xSF;
-zSF = 0.073; //0.07; // uT / LSB
-xRange = 1200; //1150; // +/- 1150 uT
+zSF = 0.07; // uT / LSB
+xRange = 1200; // +/- 1150 uT
 yRange = xRange;
-zRange = 1200; //2500; // +/- 2500 uT
+zRange = 1200; // +/- 2500 uT
 
 /************************************************/
 /*     Determine the frequency of the samples   */

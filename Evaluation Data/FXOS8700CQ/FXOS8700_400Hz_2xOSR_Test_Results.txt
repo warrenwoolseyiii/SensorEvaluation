@@ -1,0 +1,7 @@
+***** FXOS8700 Baseline Noise Test *****
+	Test parameters:
+		Sampling Frequency = 405.579210
+		Range X, Y, Z = 1200 uT, 1200 uT, 1200 uT
+	Noise range:
+		Counts X, Y, Z = 76 cnts, 70 cnts, 106 cnts
+		Scaled X, Y, Z = 2.660000 uT, 2.450000 uT, 7.420000 uT
