@@ -1,13 +1,13 @@
 /************************************************/
 /*              Sensor information              */
 /************************************************/
-sensorName = "FXOS8700";
+sensorName = "BMX055";
 xSF = 0.07; //0.035; // uT / LSB
 ySF = xSF;
-zSF = 0.07; // uT / LSB
+zSF = 0.12; // 0.07; // uT / LSB
 xRange = 1200; // +/- 1150 uT
 yRange = xRange;
-zRange = 1200; // +/- 2500 uT
+zRange = 2000; // 1200; // +/- 2500 uT
 
 /************************************************/
 /*     Determine the frequency of the samples   */
