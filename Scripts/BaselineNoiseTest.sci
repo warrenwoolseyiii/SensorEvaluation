@@ -2,12 +2,12 @@
 /*              Sensor information              */
 /************************************************/
 sensorName = "MEMSIC";
-xSF = 0.3; // 0.07; //0.035; // uT / LSB
+xSF = 0.097; // 0.07; //0.035; // uT / LSB
 ySF = xSF;
-zSF = 0.3; //0.12; // 0.07; // uT / LSB
-xRange = 4000; //1200; // +/- 1150 uT
+zSF = 0.097; //0.12; // 0.07; // uT / LSB
+xRange = 1600; //1200; // +/- 1150 uT
 yRange = xRange;
-zRange = 4000; //2000; // 1200; // +/- 2500 uT
+zRange = 1600; //2000; // 1200; // +/- 2500 uT
 
 /************************************************/
 /*     Determine the frequency of the samples   */
