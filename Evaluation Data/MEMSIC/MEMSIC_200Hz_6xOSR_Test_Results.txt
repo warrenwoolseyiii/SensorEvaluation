@@ -1,0 +1,7 @@
+***** MEMSIC Baseline Noise Test *****
+	Test parameters:
+		Sampling Frequency = 200.642135
+		Range X, Y, Z = 4000 uT, 4000 uT, 4000 uT
+	Noise range:
+		Counts X, Y, Z = 75 cnts, 66 cnts, 85 cnts
+		Scaled X, Y, Z = 22.500000 uT, 19.800000 uT, 25.500000 uT

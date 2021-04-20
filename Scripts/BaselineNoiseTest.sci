@@ -1,13 +1,13 @@
 /************************************************/
 /*              Sensor information              */
 /************************************************/
-sensorName = "BMX055";
-xSF = 0.07; //0.035; // uT / LSB
+sensorName = "MEMSIC";
+xSF = 0.3; // 0.07; //0.035; // uT / LSB
 ySF = xSF;
-zSF = 0.12; // 0.07; // uT / LSB
-xRange = 1200; // +/- 1150 uT
+zSF = 0.3; //0.12; // 0.07; // uT / LSB
+xRange = 4000; //1200; // +/- 1150 uT
 yRange = xRange;
-zRange = 2000; // 1200; // +/- 2500 uT
+zRange = 4000; //2000; // 1200; // +/- 2500 uT
 
 /************************************************/
 /*     Determine the frequency of the samples   */
@@ -89,9 +89,9 @@ minZ = min(dataSet(:,5));
 noiseRange.xCounts = abs(maxX - minX);
 noiseRange.yCounts = abs(maxY - minY);
 noiseRange.zCounts = abs(maxZ - minZ);
-noiseRange.x = noiseRange.xCounts * 0.035; // BMX is 0.035 uT / LSB on x & y
-noiseRange.y = noiseRange.yCounts * 0.035; // BMX is 0.035 uT / LSB on x & y
-noiseRange.z = noiseRange.zCounts * 0.07;  // BMX is 0.07 uT / LSB on z
+noiseRange.x = noiseRange.xCounts * xSF; // BMX is 0.035 uT / LSB on x & y
+noiseRange.y = noiseRange.yCounts * ySF; // BMX is 0.035 uT / LSB on x & y
+noiseRange.z = noiseRange.zCounts * zSF;  // BMX is 0.07 uT / LSB on z
 
 /************************************************/
 /*          Generate the report and plots       */
