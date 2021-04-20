@@ -1,0 +1,7 @@
+***** DRV425 Baseline Noise Test *****
+	Test parameters:
+		Sampling Frequency = 400.000000
+		Range X, Y, Z = 4000 uT, 4000 uT, 4000 uT
+	Noise range:
+		Counts X, Y, Z = 0 cnts, 6 cnts, 0 cnts
+		Scaled X, Y, Z = 0.000000 uT, 0.549000 uT, 0.000000 uT
