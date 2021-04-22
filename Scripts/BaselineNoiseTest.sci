@@ -1,13 +1,13 @@
 /************************************************/
 /*              Sensor information              */
 /************************************************/
-sensorName = "MEMSIC";
-xSF = 0.097; //0.0915; // 0.07; //0.035; // uT / LSB
-ySF = xSF;
-zSF = 0.097; //0.0915; //0.12; // 0.07; // uT / LSB
-xRange = 1600; //4000; //1200; // +/- 1150 uT
-yRange = xRange;
-zRange = 1600; //4000; //2000; // 1200; // +/- 2500 uT
+mmc = struct('name', "MEMSIC", 'xSF', 0.00625, 'ySF', 0.00625, 'zSF', 0.00625, 'xRange', 1600, 'yRange', 1600, 'zRange', 1600);
+drv = struct('name', "DRV425", 'xSF', 0.0915, 'ySF', 0.0915, 'zSF', 0.0915, 'xRange', 4000, 'yRange', 4000, 'zRange', 4000);
+bmx160 = struct('name', "BMX160", 'xSF', 0.344, 'ySF', 0.344, 'zSF', 0.769, 'xRange', 2300, 'yRange', 2300, 'zRange', 5000);
+bmx055 = struct('name', "BMX055", 'xSF', 0.333, 'ySF', 0.333, 'zSF', 0.143, 'xRange', 2600, 'yRange', 2600, 'zRange', 5000);
+fxos = struct('name', "FXOS8700", 'xSF', 0.1, 'ySF', 0.1, 'zSF', 0.1, 'xRange', 2400, 'yRange', 2400, 'zRange', 2400);
+
+sensor = fxos;
 
 /************************************************/
 /*     Determine the frequency of the samples   */
@@ -59,9 +59,9 @@ end
 timeSeries = [];
 time = [];
 for i=1:samplesPerSec
-    x = dataSet(i,3) * 0.035; // BMX is 0.035 uT / LSB on x & y
-    y = dataSet(i,4) * 0.035; // BMX is 0.035 uT / LSB on x & y
-    z = dataSet(i,5) * 0.07;  // BMX is 0.07 uT / LSB on z
+    x = dataSet(i,3) * sensor.xSF;
+    y = dataSet(i,4) * sensor.ySF;
+    z = dataSet(i,5) * sensor.zSF;
     timeSeries(i) = sqrt(x*x + y*y + z*z);
     time(i) = i * avgDelta;
 end
@@ -89,16 +89,16 @@ minZ = min(dataSet(:,5));
 noiseRange.xCounts = abs(maxX - minX);
 noiseRange.yCounts = abs(maxY - minY);
 noiseRange.zCounts = abs(maxZ - minZ);
-noiseRange.x = noiseRange.xCounts * xSF; // BMX is 0.035 uT / LSB on x & y
-noiseRange.y = noiseRange.yCounts * ySF; // BMX is 0.035 uT / LSB on x & y
-noiseRange.z = noiseRange.zCounts * zSF;  // BMX is 0.07 uT / LSB on z
+noiseRange.x = noiseRange.xCounts * sensor.xSF;
+noiseRange.y = noiseRange.yCounts * sensor.ySF;
+noiseRange.z = noiseRange.zCounts * sensor.zSF;
 
 /************************************************/
 /*          Generate the report and plots       */
 /************************************************/
 // Print information to the console
-printf("***** %s Baseline Noise Test *****\n", sensorName);
-printf("\tTest parameters:\n\t\tSampling Frequency = %f\n\t\tRange X, Y, Z = %d uT, %d uT, %d uT\n", sampleFreqReport.sampleFreq, xRange, yRange, zRange);
+printf("***** %s Baseline Noise Test *****\n", sensor.name);
+printf("\tTest parameters:\n\t\tSampling Frequency = %f\n\t\tRange X, Y, Z = %d uT, %d uT, %d uT\n", sampleFreqReport.sampleFreq, sensor.xRange, sensor.yRange, sensor.zRange);
 printf("\tNoise range:\n\t\tCounts X, Y, Z = %d cnts, %d cnts, %d cnts\n\t\tScaled X, Y, Z = %f uT, %f uT, %f uT\n", noiseRange.xCounts, noiseRange.yCounts, noiseRange.zCounts, noiseRange.x, noiseRange.y, noiseRange.z);
 
 // Clear plots
@@ -107,15 +107,17 @@ xdel(winsid());
 // Plot 1 second worth of raw signal in counts
 scf(1);
 clf(1);
-plot(dataSet(1:samplesPerSec,1), dataSet(1:samplesPerSec,3:5));
+plot(dataSet(1:samplesPerSec,1), (dataSet(1:samplesPerSec,3) * sensor.xSF), 'b');
+plot(dataSet(1:samplesPerSec,1), (dataSet(1:samplesPerSec,4) * sensor.ySF), 'r');
+plot(dataSet(1:samplesPerSec,1), (dataSet(1:samplesPerSec,5) * sensor.zSF), 'g');
 
 // Band the x noise
-xBand = mean(dataSet(1:samplesPerSec,3));
+xBand = mean(dataSet(1:samplesPerSec,3)) * sensor.xSF;
 xBandH = [];
 xBandL = [];
 for i=1:samplesPerSec
-    xBandH(i) = xBand + (noiseRange.xCounts / 2);
-    xBandL(i) = xBand - (noiseRange.xCounts / 2);
+    xBandH(i) = xBand + (noiseRange.x / 2);
+    xBandL(i) = xBand - (noiseRange.x / 2);
 end
 
 plot(dataSet(1:samplesPerSec,1), xBandH);
@@ -123,31 +125,31 @@ plot(dataSet(1:samplesPerSec,1), xBandL);
 
 
 // Band the y noise
-yBand = mean(dataSet(1:samplesPerSec,4));
+yBand = mean(dataSet(1:samplesPerSec,4)) * sensor.ySF;
 yBandH = [];
 yBandL = [];
 for i=1:samplesPerSec
-    yBandH(i) = yBand + (noiseRange.yCounts / 2);
-    yBandL(i) = yBand - (noiseRange.yCounts / 2);
+    yBandH(i) = yBand + (noiseRange.y / 2);
+    yBandL(i) = yBand - (noiseRange.y / 2);
 end
 
 plot(dataSet(1:samplesPerSec,1), yBandH);
 plot(dataSet(1:samplesPerSec,1), yBandL);
 
 // Band the z noise
-zBand = mean(dataSet(1:samplesPerSec,5));
+zBand = mean(dataSet(1:samplesPerSec,5)) * sensor.zSF;
 zBandH = [];
 zBandL = [];
 for i=1:samplesPerSec
-    zBandH(i) = zBand + (noiseRange.zCounts / 2);
-    zBandL(i) = zBand - (noiseRange.zCounts / 2);
+    zBandH(i) = zBand + (noiseRange.z / 2);
+    zBandL(i) = zBand - (noiseRange.z / 2);
 end
 
 plot(dataSet(1:samplesPerSec,1), zBandH);
 plot(dataSet(1:samplesPerSec,1), zBandL);
 
 xlabel("Time (ms)");
-ylabel("Magnetic Field Strength (counts)");
+ylabel("Magnetic Field Strength (uT)");
 title("Noise banding");
 
 // Plot the PSD in the frequency domain

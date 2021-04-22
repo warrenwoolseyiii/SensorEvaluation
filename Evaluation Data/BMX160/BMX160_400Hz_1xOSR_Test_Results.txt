@@ -1,7 +1,7 @@
 ***** BMX160 Baseline Noise Test *****
 	Test parameters:
 		Sampling Frequency = 395.364552
-		Range X, Y, Z = 1150 uT, 1150 uT, 2500 uT
+		Range X, Y, Z = 2300 uT, 2300 uT, 5000 uT
 	Noise range:
 		Counts X, Y, Z = 136 cnts, 144 cnts, 48 cnts
-		Scaled X, Y, Z = 4.760000 uT, 5.040000 uT, 3.360000 uT
+		Scaled X, Y, Z = 46.784000 uT, 49.536000 uT, 36.912000 uT

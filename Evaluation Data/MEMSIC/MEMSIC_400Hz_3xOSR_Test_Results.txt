@@ -4,4 +4,4 @@
 		Range X, Y, Z = 1600 uT, 1600 uT, 1600 uT
 	Noise range:
 		Counts X, Y, Z = 128 cnts, 92 cnts, 113 cnts
-		Scaled X, Y, Z = 12.416000 uT, 8.924000 uT, 10.961000 uT
+		Scaled X, Y, Z = 0.800000 uT, 0.575000 uT, 0.706250 uT
