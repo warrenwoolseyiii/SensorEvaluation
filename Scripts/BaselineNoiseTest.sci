@@ -7,7 +7,7 @@ bmx160 = struct('name', "BMX160", 'xSF', 0.344, 'ySF', 0.344, 'zSF', 0.769, 'xRa
 bmx055 = struct('name', "BMX055", 'xSF', 0.333, 'ySF', 0.333, 'zSF', 0.143, 'xRange', 2600, 'yRange', 2600, 'zRange', 5000);
 fxos = struct('name', "FXOS8700", 'xSF', 0.1, 'ySF', 0.1, 'zSF', 0.1, 'xRange', 2400, 'yRange', 2400, 'zRange', 2400);
 
-sensor = fxos;
+sensor = mmc;
 
 /************************************************/
 /*     Determine the frequency of the samples   */
