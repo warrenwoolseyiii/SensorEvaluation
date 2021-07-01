@@ -1,13 +1,14 @@
 /************************************************/
 /*              Sensor information              */
 /************************************************/
+ak09904 = struct('name', "AK09904", 'xSF', 0.01, 'ySF', 0.01, 'zSF', 0.01, 'xRange', 1310, 'yRange', 1310, 'zRange', 1310);
 mmc = struct('name', "MEMSIC", 'xSF', 0.00625, 'ySF', 0.00625, 'zSF', 0.00625, 'xRange', 1600, 'yRange', 1600, 'zRange', 1600);
 drv = struct('name', "DRV425", 'xSF', 0.0915, 'ySF', 0.0915, 'zSF', 0.0915, 'xRange', 4000, 'yRange', 4000, 'zRange', 4000);
 bmx160 = struct('name', "BMX160", 'xSF', 0.344, 'ySF', 0.344, 'zSF', 0.769, 'xRange', 2300, 'yRange', 2300, 'zRange', 5000);
 bmx055 = struct('name', "BMX055", 'xSF', 0.333, 'ySF', 0.333, 'zSF', 0.143, 'xRange', 2600, 'yRange', 2600, 'zRange', 5000);
 fxos = struct('name', "FXOS8700", 'xSF', 0.1, 'ySF', 0.1, 'zSF', 0.1, 'xRange', 2400, 'yRange', 2400, 'zRange', 2400);
 
-sensor = mmc;
+sensor = ak09904;
 
 /************************************************/
 /*     Determine the frequency of the samples   */

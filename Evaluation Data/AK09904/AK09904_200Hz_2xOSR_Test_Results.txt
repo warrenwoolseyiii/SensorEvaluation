@@ -1,0 +1,7 @@
+***** AK09904 Baseline Noise Test *****
+	Test parameters:
+		Sampling Frequency = 203.255110
+		Range X, Y, Z = 1310 uT, 1310 uT, 1310 uT
+	Noise range:
+		Counts X, Y, Z = 39 cnts, 56 cnts, 46 cnts
+		Scaled X, Y, Z = 0.390000 uT, 0.560000 uT, 0.460000 uT
