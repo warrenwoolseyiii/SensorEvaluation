@@ -1,0 +1,7 @@
+***** MMC5883 Baseline Noise Test *****
+	Test parameters:
+		Sampling Frequency = 200.000000
+		Range X, Y, Z = 1600 uT, 1600 uT, 1600 uT
+	Noise range:
+		Counts X, Y, Z = 37 cnts, 32 cnts, 41 cnts
+		Scaled X, Y, Z = 0.925000 uT, 0.800000 uT, 1.025000 uT

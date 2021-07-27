@@ -7,8 +7,9 @@ drv = struct('name', "DRV425", 'xSF', 0.0915, 'ySF', 0.0915, 'zSF', 0.0915, 'xRa
 bmx160 = struct('name', "BMX160", 'xSF', 0.344, 'ySF', 0.344, 'zSF', 0.769, 'xRange', 2300, 'yRange', 2300, 'zRange', 5000);
 bmx055 = struct('name', "BMX055", 'xSF', 0.333, 'ySF', 0.333, 'zSF', 0.143, 'xRange', 2600, 'yRange', 2600, 'zRange', 5000);
 fxos = struct('name', "FXOS8700", 'xSF', 0.1, 'ySF', 0.1, 'zSF', 0.1, 'xRange', 2400, 'yRange', 2400, 'zRange', 2400);
+mmc5883 = struct('name', "MMC5883", 'xSF', 0.025, 'ySF', 0.025, 'zSF', 0.025, 'xRange', 1600, 'yRange', 1600, 'zRange', 1600);
 
-sensor = ak09904;
+sensor = mmc5883;
 
 /************************************************/
 /*     Determine the frequency of the samples   */
